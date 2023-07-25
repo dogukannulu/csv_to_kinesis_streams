@@ -17,3 +17,5 @@ This will download the sh script into your machine
 ````
 It will get the machine ready first. Then, download the zip file, install necessary libraries and run the Python script.
 CSV data will be streaming to Kinesis Data Streams
+
+Note: zip file includes iris.csv, data_streams.py and requirements.txt
