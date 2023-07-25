@@ -1,16 +1,21 @@
 #!/bin/bash
 
-# Download the zip file from GitHub
-wget https://github.com/your_username/your_repo/raw/main/my_script.zip
+# install pip3 and python3
+sudo yum update
+sudo yum install python3
+sudo yum install python3-pip
+
+# download the zip file
+curl -O https://github.com/dogukannulu/csv_to_kinesis_streams/blob/main/csv_to_kinesis.zip
 
 # Unzip the files
-unzip my_script.zip
+unzip csv_to_kinesis.zip
 
 # Navigate to the extracted directory
-cd my_script
+cd csv_to_kinesis
 
 # Install the required libraries
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 # Execute the Python script
-python your_script.py your_csv_file.csv
+python3 data_streams.py --stream_name <kinesis_stream_name> --interval 2 --max_rows 60 --skip-header
