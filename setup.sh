@@ -11,7 +11,7 @@ cd /data
 sudo wget https://github.com/dogukannulu/csv_to_kinesis_streams/raw/main/csv_to_kinesis.zip
 
 # Unzip the files
-sudo unzip csv_to_kinesis.zip
+sudo unzip -d csv_to_kinesis.zip csv_to_kinesis
 
 # Navigate to the extracted directory
 cd csv_to_kinesis
