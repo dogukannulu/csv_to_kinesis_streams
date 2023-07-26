@@ -22,7 +22,6 @@ def define_arguments():
     parser.add_argument("--stream_name", "-sn", required=True, help="Name of the Kinesis Data Stream")
     parser.add_argument("--interval", "-i", type=int, required=True, help="Time interval (in seconds) between two writes")
     parser.add_argument("--max_rows", "-mr", type=int, default=150, help="Maximum number of rows to write (max: 150)")
-    parser.add_argument("--skip_header", "-sh", action="store_true", help="Skip the header row in CSV")
     args = parser.parse_args()
 
     return args
@@ -40,13 +39,12 @@ def determine_partition_key(species):
     return partition_key_mapping.get(species, 'unknown')
 
 
-def send_csv_to_kinesis(stream_name, interval, max_rows, skip_header, csv_file=GlobalVariables.csv_file_path):
+def send_csv_to_kinesis(stream_name, interval, max_rows, csv_file=GlobalVariables.csv_file_path):
     client = GlobalVariables.kinesis_client
 
     with open(csv_file, 'r') as file:
         csv_reader = csv.reader(file)
-        if skip_header:
-            next(csv_reader)  # Skip the header row
+        next(csv_reader)  # Skip the header row
 
         rows_written = 0
         for row in csv_reader:
@@ -76,4 +74,4 @@ if __name__ == "__main__":
         logging.warning("Warning: The maximum number of rows cannot exceed 150. Setting max_rows to 150.")
         args.max_rows = 150
 
-    send_csv_to_kinesis(args.stream_name, args.interval, args.max_rows, args.skip_header)
+    send_csv_to_kinesis(args.stream_name, args.interval, args.max_rows)
