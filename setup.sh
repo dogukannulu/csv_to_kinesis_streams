@@ -7,7 +7,7 @@ sudo yum install python3-pip
 
 # download the zip file
 cd /data
-sudo curl -O https://github.com/dogukannulu/csv_to_kinesis_streams/blob/main/csv_to_kinesis.zip
+sudo curl -O https://github.com/dogukannulu/csv_to_kinesis_streams/raw/main/csv_to_kinesis.zip
 
 # Unzip the files
 cd /data
