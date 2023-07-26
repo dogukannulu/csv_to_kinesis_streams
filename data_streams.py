@@ -11,6 +11,7 @@ logger = logging.getLogger("CSV file to Kinesis Data Streams")
 
 class GlobalVariables():
     csv_file_path = './iris.csv'
+    kinesis_client = boto3.client('kinesis')
 
 
 def define_arguments():
@@ -40,7 +41,8 @@ def determine_partition_key(species):
 
 
 def send_csv_to_kinesis(stream_name, interval, max_rows, skip_header, csv_file=GlobalVariables.csv_file_path):
-    kinesis_client = boto3.client('kinesis')
+    client = GlobalVariables.kinesis_client
+
     with open(csv_file, 'r') as file:
         csv_reader = csv.reader(file)
         if skip_header:
@@ -48,12 +50,12 @@ def send_csv_to_kinesis(stream_name, interval, max_rows, skip_header, csv_file=G
 
         rows_written = 0
         for row in csv_reader:
-            species = row[-1]  # Assuming the last column contains the species name
+            species = row[-1]  # Last column contains the species name
             partition_key = determine_partition_key(species)
             data = ','.join(row)
             encoded_data = data.encode('utf-8')  # Encode the data as bytes
             
-            response = kinesis_client.put_record(
+            response = client.put_record(
                 StreamName=stream_name,
                 Data=encoded_data,
                 PartitionKey=partition_key

@@ -13,6 +13,7 @@ This will download the sh script into your machine
 2. Then only run
 
 ````
+chmod +x setup.sh
 ./setup.sh
 ````
 It will get the machine ready first. Then, download the zip file, install necessary libraries and run the Python script.
