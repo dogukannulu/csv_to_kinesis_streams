@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd /data
+
 # install pip3 and python3
 sudo yum update
 sudo yum install python3
