@@ -11,14 +11,11 @@ cd /data
 sudo wget https://github.com/dogukannulu/csv_to_kinesis_streams/raw/main/csv_to_kinesis.zip
 
 # Unzip the files
-sudo unzip -d csv_to_kinesis.zip csv_to_kinesis
-
-# Navigate to the extracted directory
-cd csv_to_kinesis
+sudo unzip csv_to_kinesis.zip
 
 # Install the required libraries
 pip3 install -r requirements.txt
 
 # Execute the Python script
-sudo chmod +x csv_to_kinesis.py
+sudo chmod +x data_streams.py
 python3 data_streams.py --stream_name streaming-ec2-csv --interval 2 --max_rows 60 --skip-header
