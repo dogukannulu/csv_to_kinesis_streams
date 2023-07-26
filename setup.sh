@@ -6,10 +6,10 @@ sudo yum install python3
 sudo yum install python3-pip
 
 # download the zip file
-curl -O https://github.com/dogukannulu/csv_to_kinesis_streams/blob/main/csv_to_kinesis.zip
+sudo curl -O https://github.com/dogukannulu/csv_to_kinesis_streams/blob/main/csv_to_kinesis.zip
 
 # Unzip the files
-unzip csv_to_kinesis.zip
+sudo unzip csv_to_kinesis.zip
 
 # Navigate to the extracted directory
 cd csv_to_kinesis
@@ -18,5 +18,5 @@ cd csv_to_kinesis
 pip3 install -r requirements.txt
 
 # Execute the Python script
-chmod +x csv_to_kinesis.py
-python3 data_streams.py --stream_name <kinesis_stream_name> --interval 2 --max_rows 60 --skip-header
+sudo chmod +x csv_to_kinesis.py
+python3 data_streams.py --stream_name streaming-ec2-csv --interval 2 --max_rows 60 --skip-header
