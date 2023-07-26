@@ -11,7 +11,7 @@ logger = logging.getLogger("CSV file to Kinesis Data Streams")
 
 class GlobalVariables():
     csv_file_path = './iris.csv'
-    kinesis_client = boto3.client('kinesis')
+    kinesis_client = boto3.client('kinesis', region_name='eu-central-1')
 
 
 def define_arguments():
