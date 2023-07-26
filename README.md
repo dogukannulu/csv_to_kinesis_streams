@@ -6,7 +6,7 @@ This repo will be streaming the iris.csv file row by row into Amazon Kinesis Dat
 
 1. 
 ````
-curl -O https://raw.githubusercontent.com/dogukannulu/csv_to_kinesis_streams/main/setup.sh
+sudo curl -O https://raw.githubusercontent.com/dogukannulu/csv_to_kinesis_streams/main/setup.sh
 ````
 This will download the sh script into your machine
 
