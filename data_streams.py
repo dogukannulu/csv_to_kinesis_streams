@@ -51,7 +51,7 @@ def send_csv_to_kinesis(stream_name, interval, max_rows, csv_file=GlobalVariable
             species = row[-1]  # Last column contains the species name
             partition_key = determine_partition_key(species)
             data = ','.join(row)
-            encoded_data = data.encode('utf-8')  # Encode the data as bytes
+            encoded_data = f"{data}\n".encode('utf-8')  # Encode the data as bytes
             
             response = client.put_record(
                 StreamName=stream_name,
