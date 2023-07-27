@@ -2,7 +2,7 @@
 
 This repo will be streaming the `iris.csv` file row by row into Amazon Kinesis Data Streams.
 
-### Assuming you are working in a Linux distribution
+### Below instructions are valid for the EC2 instance
 
 1. Create necessary directory inside the EC2 instance:
 ````
